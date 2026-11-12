@@ -7,8 +7,6 @@
 -- Выберите станции (или их идентификаторы, если другой информации нет в таблице), на которых поезда останавливаются в период с 14:00 до 15:00, отсортировав их по комбинации полей: станция (идентификатор) по возрастанию, время прибытия по убыванию.
 -- Сопоставьте дням недели количество поездов, останавливающихся на станции «Москворечье». 
 
-
-
 -- Очистка базы данных
 DROP TABLE IF EXISTS without_stop CASCADE;
 DROP TABLE IF EXISTS stop_route CASCADE;
@@ -217,13 +215,13 @@ ORDER BY stations_count DESC;
 
 -- Количество поездов, останавливающихся на станции 'Москворечье'.
 SELECT 
-COUNT(CASE WHEN r.route_days LIKE '%1%' THEN 1 END) AS "Понедельник",
-COUNT(CASE WHEN r.route_days LIKE '%2%' THEN 1 END) AS "Вторник",
-COUNT(CASE WHEN r.route_days LIKE '%3%' THEN 1 END) AS "Среда",
-COUNT(CASE WHEN r.route_days LIKE '%4%' THEN 1 END) AS "Четверг",
-COUNT(CASE WHEN r.route_days LIKE '%5%' THEN 1 END) AS "Пятница",
-COUNT(CASE WHEN r.route_days LIKE '%6%' THEN 1 END) AS "Суббота",
-COUNT(CASE WHEN r.route_days LIKE '%7%' THEN 1 END) AS "Воскресенье"
+COUNT(CASE WHEN r.route_days LIKE '%1%' THEN 1 END) AS 'Понедельник',
+COUNT(CASE WHEN r.route_days LIKE '%2%' THEN 1 END) AS 'Вторник',
+COUNT(CASE WHEN r.route_days LIKE '%3%' THEN 1 END) AS 'Среда',
+COUNT(CASE WHEN r.route_days LIKE '%4%' THEN 1 END) AS 'Четверг',
+COUNT(CASE WHEN r.route_days LIKE '%5%' THEN 1 END) AS 'Пятница',
+COUNT(CASE WHEN r.route_days LIKE '%6%' THEN 1 END) AS 'Суббота',
+COUNT(CASE WHEN r.route_days LIKE '%7%' THEN 1 END) AS 'Воскресенье'
 FROM route r
 JOIN stop_route sr ON r.route_id = sr.route_id
 JOIN stations s ON sr.station_id = s.station_id
